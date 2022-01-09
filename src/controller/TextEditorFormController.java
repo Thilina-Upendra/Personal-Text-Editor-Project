@@ -54,6 +54,7 @@ public class TextEditorFormController {
     public JFXTextField txtReplaceWord;
     public JFXButton btnReplaceAll;
     public JFXButton btnReplace;
+    public Label lblSearchCount;
 
     private Matcher matcher;
     private boolean textChanged;
@@ -257,6 +258,7 @@ public class TextEditorFormController {
 
         if(matcher.find()){
             txtTextArea.selectRange(matcher.start(), matcher.end());
+            lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
         }else{
             matcher.reset();
         }
@@ -283,6 +285,7 @@ public class TextEditorFormController {
             }
             if (matcher.start()==indexes.get(i)){
                 txtTextArea.selectRange(indexes.get(i-2),indexes.get(i-1));
+                lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
                 matcher.find(indexes.get(i-2));
                 return;
             }
@@ -296,6 +299,8 @@ public class TextEditorFormController {
         txtTextArea.deselect();
         String replacedText = matcher.replaceAll(txtReplaceWord.getText());
         txtTextArea.setText(replacedText);
+        textChanged = true;
+        btnFindNextWordOnAction(new ActionEvent());
     }
 
     public void btnReplaceOnAction(ActionEvent actionEvent) {

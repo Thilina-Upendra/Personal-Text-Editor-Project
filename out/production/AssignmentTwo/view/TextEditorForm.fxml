@@ -153,7 +153,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblWordCount" layoutX="118.0" layoutY="491.0" prefHeight="29.0" prefWidth="88.0">
+      <Label fx:id="lblWordCount" layoutX="130.0" layoutY="491.0" prefHeight="29.0" prefWidth="88.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -168,5 +168,15 @@
       <JFXTextField fx:id="txtReplaceWord" focusColor="#2d3436" labelFloat="true" layoutX="522.0" layoutY="114.0" prefHeight="46.0" prefWidth="95.0" promptText="Replace word" />
       <JFXButton fx:id="btnReplace" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="111.0" onAction="#btnReplaceOnAction" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace " textFill="WHITE" />
       <JFXButton fx:id="btnReplaceAll" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="139.0" onAction="#btnReplaceAllOnAction" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace All" textFill="WHITE" />
+      <Label fx:id="lblSearchCount" layoutX="645.0" layoutY="491.0" prefHeight="29.0" prefWidth="88.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="501.0" layoutY="491.0" prefHeight="29.0" prefWidth="131.0" text="Search Count : ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
