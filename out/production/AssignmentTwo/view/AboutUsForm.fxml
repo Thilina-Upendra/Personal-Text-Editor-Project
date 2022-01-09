@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="116.0" fitWidth="134.0" layoutX="179.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/Screenshot%20from%202022-01-05%2005-08-03.png" />
+            <Image url="@../assets/Screenshot%20from%202022-01-05%2005-08-03.png" />
          </image>
       </ImageView>
       <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutY="135.0" prefHeight="124.0" prefWidth="481.0" style="-fx-border-color: #95a5a6;" text="                                    UpText&#10;                                      1.0.0&#10;            Uptext is a small and lightweight &#10;            text editor for the manipulation work&#10;        Copyright © 2021-2022 - the UpText team&#10;   This program comes with absolutely no warranty.">

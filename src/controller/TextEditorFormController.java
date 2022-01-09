@@ -42,10 +42,8 @@ public class TextEditorFormController {
 
 
     public void initialize() {
-        lblFileSaveName.setText("untitled document");
+        lblFileSaveName.setText("untitled document*");
         lblFilePath.setText("");
-
-
     }
 
 
@@ -61,9 +59,7 @@ public class TextEditorFormController {
             } else {
                 loadNewWindow();
             }
-
         }
-
     }
 
     private void loadNewWindow() throws IOException {
@@ -78,6 +74,7 @@ public class TextEditorFormController {
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
+
             /*Create a pointer to open(read) the file*/
             Path path = Paths.get(file.getAbsolutePath());
 
@@ -98,7 +95,6 @@ public class TextEditorFormController {
                 return;
             }
         }
-
     }
 
     public void mtmSaveOnAction(ActionEvent actionEvent) throws IOException {
@@ -107,6 +103,7 @@ public class TextEditorFormController {
         File file = fileChooser.showSaveDialog(null);
 
         if (file != null) {
+
             /*Create a pointer to save(write) the file*/
             Path path = Paths.get(file.getAbsolutePath());
 
@@ -128,8 +125,6 @@ public class TextEditorFormController {
                 return;
             }
         }
-
-
     }
 
     public void mtmExitOnAction(ActionEvent actionEvent) throws IOException {
@@ -139,7 +134,6 @@ public class TextEditorFormController {
         } else {
             mtmSaveOnAction(new ActionEvent());
         }
-
     }
 
 
@@ -177,7 +171,32 @@ public class TextEditorFormController {
         Scene scene = new Scene(load);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("About UpText");
         stage.show();
+    }
+
+    public void btnNewDocOnAction(ActionEvent actionEvent) {
+        mtmNew.fire();
+    }
+
+    public void btnSaveOnAction(ActionEvent actionEvent) {
+        mtmSave.fire();
+    }
+
+    public void btnOpenOnAction(ActionEvent actionEvent) {
+        mtmOpen.fire();
+    }
+
+    public void btnCutOnAction(ActionEvent actionEvent) {
+        mtmCut.fire();
+    }
+
+    public void btnPasteOnAction(ActionEvent actionEvent) {
+        mtmPaste.fire();
+    }
+
+    public void btnCopyOnAction(ActionEvent actionEvent) {
+        mtmCopy.fire();
     }
 }
