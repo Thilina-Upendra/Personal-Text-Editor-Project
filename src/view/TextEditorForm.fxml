@@ -159,11 +159,11 @@
          </font>
       </Label>
       <Separator layoutX="340.0" layoutY="113.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="7.0" />
-      <JFXTextField fx:id="txtFind" focusColor="#2d3436" labelFloat="true" layoutX="347.0" layoutY="114.0" prefHeight="46.0" prefWidth="88.0" promptText="Find" />
+      <JFXTextField fx:id="txtFind" focusColor="#2d3436" labelFloat="true" layoutX="347.0" layoutY="114.0" prefHeight="46.0" prefWidth="88.0" promptText="Match Case" />
       <ToggleButton fx:id="btnCaseSensitive" layoutX="444.0" layoutY="111.0" mnemonicParsing="false" onAction="#btnCaseSensitiveOnAction" prefHeight="26.0" prefWidth="37.0" text="Cc" />
       <Separator layoutX="516.0" layoutY="113.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="7.0" />
       <ToggleButton fx:id="btnRegExp" layoutX="483.0" layoutY="111.0" mnemonicParsing="false" onAction="#btnRegExpOnAction" prefHeight="26.0" prefWidth="29.0" text=".*" />
-      <JFXButton layoutX="444.0" layoutY="139.0" prefHeight="6.0" prefWidth="37.0" style="-fx-background-color: #000000;" text="⇈" textFill="WHITE" />
+      <JFXButton fx:id="btnFindPreviousWord" layoutX="444.0" layoutY="139.0" onAction="#btnFindPreviousWordOnAction" prefHeight="6.0" prefWidth="37.0" style="-fx-background-color: #000000;" text="⇈" textFill="WHITE" />
       <JFXButton fx:id="btnFindNextWord" layoutX="483.0" layoutY="139.0" onAction="#btnFindNextWordOnAction" prefHeight="26.0" prefWidth="20.0" style="-fx-background-color: #000000;" text="⇊" textFill="WHITE" />
       <JFXTextField focusColor="#2d3436" labelFloat="true" layoutX="522.0" layoutY="114.0" prefHeight="46.0" prefWidth="95.0" promptText="Replace word" />
       <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="111.0" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace " textFill="WHITE" />

@@ -19,6 +19,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,9 +50,11 @@ public class TextEditorFormController {
     public JFXButton btnFindNextWord;
     public ToggleButton btnCaseSensitive;
     public ToggleButton btnRegExp;
+    public JFXButton btnFindPreviousWord;
 
     private Matcher matcher;
     private boolean textChanged;
+    private ArrayList<Integer> indexes = new ArrayList<>();
 
 
     public void initialize() {
@@ -60,11 +63,15 @@ public class TextEditorFormController {
 
         txtTextArea.textProperty().addListener((observable, oldValue, newValue) -> {
             setWordCount();
-            textChanged = newValue.trim().isEmpty()?false:true;
+        });
+
+        txtFind.textProperty().addListener((observable, oldValue, newValue) -> {
+            textChanged = true;
         });
 
 
     }
+
 
 
     private void setWordCount() {
@@ -167,7 +174,6 @@ public class TextEditorFormController {
         }
     }
 
-
     public void mtmCutOnAction(ActionEvent actionEvent) {
         setSelectedText();
         txtTextArea.setText(txtTextArea.getText().replace(txtTextArea.getSelectedText(), ""));
@@ -179,7 +185,6 @@ public class TextEditorFormController {
         content.putString(txtTextArea.getSelectedText());
         systemClipboard.setContent(content);
     }
-
 
     public void mtmCopyOnAction(ActionEvent actionEvent) {
         setSelectedText();
@@ -239,6 +244,13 @@ public class TextEditorFormController {
             if (!btnCaseSensitive.isSelected()) flags = flags | Pattern.CASE_INSENSITIVE;
             matcher = Pattern.compile(txtFind.getText(),flags).matcher(txtTextArea.getText());
             textChanged = false;
+
+            /*Get all the indexes*/
+            while(matcher.find()){
+                indexes.add(matcher.start());
+                indexes.add(matcher.end());
+            }
+            matcher.reset();
         }
 
         if(matcher.find()){
@@ -256,5 +268,22 @@ public class TextEditorFormController {
     public void btnRegExpOnAction(ActionEvent actionEvent) {
         textChanged = true;
         btnFindNextWord.fire();
+    }
+
+    public void btnFindPreviousWordOnAction(ActionEvent actionEvent) {
+
+        /*Finalize the index*/
+        for (int i = 0; i < indexes.size(); i++) {
+            if(matcher.start()==indexes.get(0)){
+                txtTextArea.selectRange(indexes.get(indexes.size()-2),indexes.get(indexes.size()-1));
+                matcher.find(indexes.get(indexes.size()-2));
+                return;
+            }
+            if (matcher.start()==indexes.get(i)){
+                txtTextArea.selectRange(indexes.get(i-2),indexes.get(i-1));
+                matcher.find(indexes.get(i-2));
+                return;
+            }
+        }
     }
 }
