@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="259.0" prefWidth="453.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutUsFormController">
+   <children>
+      <ImageView fitHeight="116.0" fitWidth="134.0" layoutX="179.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Screenshot%20from%202022-01-05%2005-08-03.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutY="135.0" prefHeight="124.0" prefWidth="481.0" style="-fx-border-color: #95a5a6;" text="                                    UpText&#10;                                      1.0.0&#10;            Uptext is a small and lightweight &#10;            text editor for the manipulation work&#10;        Copyright © 2021-2022 - the UpText team&#10;   This program comes with absolutely no warranty.">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

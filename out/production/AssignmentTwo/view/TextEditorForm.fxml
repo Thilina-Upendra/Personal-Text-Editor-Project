@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainContext" prefHeight="445.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TextEditorFormController">
+   <children>
+      <Separator layoutX="5.0" layoutY="63.0" prefHeight="3.0" prefWidth="612.0" style="-fx-background-color: #34495e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0" />
+      <Label fx:id="lblFileSaveName" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="6.0" prefHeight="16.0" prefWidth="256.0" text="File saved name" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblFilePath" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="35.0" prefHeight="18.0" prefWidth="423.0" text="File path" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAppName" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="15.0" prefHeight="29.0" prefWidth="122.0" style="-fx-background-color: #2c3e50;" text="UpText" textFill="#ecf0f1" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <MenuBar fx:id="mbrBar" layoutX="7.0" layoutY="70.0" prefHeight="29.0" prefWidth="600.0" style="-fx-background-color: #95a5a6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+        <menus>
+          <Menu fx:id="mnFile" mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="mtmNew" mnemonicParsing="false" onAction="#mtmNewONAction" text="New" />
+                  <MenuItem fx:id="mtmOpen" mnemonicParsing="false" onAction="#mtmOpenOnAction" text="Open" />
+                  <MenuItem fx:id="mtmSave" mnemonicParsing="false" onAction="#mtmSaveOnAction" text="Save" />
+                  <MenuItem fx:id="mtmPrint" mnemonicParsing="false" text="Print" />
+                  <MenuItem fx:id="mtmExit" mnemonicParsing="false" onAction="#mtmExitOnAction" text="Exit" />
+            </items>
+          </Menu>
+          <Menu fx:id="mnEdit" mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="mtmCut" mnemonicParsing="false" onAction="#mtmCutOnAction" text="Cut" />
+                  <MenuItem fx:id="mtmCopy" mnemonicParsing="false" onAction="#mtmCopyOnAction" text="Copy" />
+                  <MenuItem fx:id="mtmPaste" mnemonicParsing="false" onAction="#mtmPasteOnAction" text="Paste" />
+                  <MenuItem fx:id="mtmSelectAll" mnemonicParsing="false" onAction="#mtmSelectAllOnAction" text="Select All" />
+            </items>
+          </Menu>
+          <Menu fx:id="mnHelp" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="mtmAboutUs" mnemonicParsing="false" onAction="#mtmAboutUsOnAction" text="About Us" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <JFXTextArea fx:id="txtTextArea" layoutX="14.0" layoutY="105.0" prefHeight="340.0" prefWidth="612.0" style="-fx-border-color: #95a5a6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
+         <font>
+            <Font size="15.0" />
+         </font></JFXTextArea>
+   </children>
+</AnchorPane>
