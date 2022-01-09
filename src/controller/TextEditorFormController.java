@@ -18,9 +18,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TextEditorFormController {
-    //Public
+
     public Label lblAppName;
     public MenuBar mbrBar;
     public Menu mnFile;
@@ -40,11 +42,27 @@ public class TextEditorFormController {
     public Label lblFileSaveName;
     public Label lblFilePath;
     public AnchorPane mainContext;
+    public Label lblWordCount;
 
 
     public void initialize() {
         lblFileSaveName.setText("untitled document*");
         lblFilePath.setText("");
+
+        txtTextArea.selectionProperty().addListener((observable, oldValue, newValue) -> {
+            setWordCount();
+        });
+
+    }
+
+    private void setWordCount() {
+        String inputText = txtTextArea.getText();
+        Matcher matcher = Pattern.compile("\\b\\w+\\b").matcher(inputText);
+        int count = 0;
+        while(matcher.find()){
+            count++;
+        }
+        lblWordCount.setText(String.valueOf(count));
     }
 
 
