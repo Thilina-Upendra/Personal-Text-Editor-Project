@@ -53,6 +53,7 @@ public class TextEditorFormController {
     public JFXButton btnFindPreviousWord;
     public JFXTextField txtReplaceWord;
     public JFXButton btnReplaceAll;
+    public JFXButton btnReplace;
 
     private Matcher matcher;
     private boolean textChanged;
@@ -289,10 +290,23 @@ public class TextEditorFormController {
     }
 
     public void btnReplaceAllOnAction(ActionEvent actionEvent) {
-        btnFindNextWordOnAction(new ActionEvent());
+        if(matcher==null){
+            btnFindNextWordOnAction(new ActionEvent());
+        }
         txtTextArea.deselect();
         String replacedText = matcher.replaceAll(txtReplaceWord.getText());
         txtTextArea.setText(replacedText);
     }
-    
+
+    public void btnReplaceOnAction(ActionEvent actionEvent) {
+        if(matcher==null){
+            btnFindNextWordOnAction(new ActionEvent());
+            return;
+        }
+        StringBuffer buffer = new StringBuffer(txtTextArea.getText());
+        StringBuffer replacedText = buffer.replace(matcher.start(), matcher.end(), txtReplaceWord.getText());
+        txtTextArea.setText(String.valueOf(replacedText));
+        textChanged = true;
+        btnFindNextWordOnAction(new ActionEvent());
+    }
 }

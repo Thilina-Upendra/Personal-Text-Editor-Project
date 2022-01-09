@@ -166,7 +166,7 @@
       <JFXButton fx:id="btnFindPreviousWord" layoutX="444.0" layoutY="139.0" onAction="#btnFindPreviousWordOnAction" prefHeight="6.0" prefWidth="37.0" style="-fx-background-color: #000000;" text="⇈" textFill="WHITE" />
       <JFXButton fx:id="btnFindNextWord" layoutX="483.0" layoutY="139.0" onAction="#btnFindNextWordOnAction" prefHeight="26.0" prefWidth="20.0" style="-fx-background-color: #000000;" text="⇊" textFill="WHITE" />
       <JFXTextField fx:id="txtReplaceWord" focusColor="#2d3436" labelFloat="true" layoutX="522.0" layoutY="114.0" prefHeight="46.0" prefWidth="95.0" promptText="Replace word" />
-      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="111.0" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace " textFill="WHITE" />
+      <JFXButton fx:id="btnReplace" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="111.0" onAction="#btnReplaceOnAction" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace " textFill="WHITE" />
       <JFXButton fx:id="btnReplaceAll" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="139.0" onAction="#btnReplaceAllOnAction" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace All" textFill="WHITE" />
    </children>
 </AnchorPane>
