@@ -1,6 +1,8 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -43,17 +45,27 @@ public class TextEditorFormController {
     public Label lblFilePath;
     public AnchorPane mainContext;
     public Label lblWordCount;
+    public JFXTextField txtFind;
+    public JFXButton btnFindNextWord;
+    public ToggleButton btnCaseSensitive;
+    public ToggleButton btnRegExp;
+
+    private Matcher matcher;
+    private boolean textChanged;
 
 
     public void initialize() {
         lblFileSaveName.setText("untitled document*");
         lblFilePath.setText("");
 
-        txtTextArea.selectionProperty().addListener((observable, oldValue, newValue) -> {
+        txtTextArea.textProperty().addListener((observable, oldValue, newValue) -> {
             setWordCount();
+            textChanged = newValue.trim().isEmpty()?false:true;
         });
 
+
     }
+
 
     private void setWordCount() {
         String inputText = txtTextArea.getText();
@@ -217,5 +229,32 @@ public class TextEditorFormController {
 
     public void btnCopyOnAction(ActionEvent actionEvent) {
         mtmCopy.fire();
+    }
+
+    public void btnFindNextWordOnAction(ActionEvent actionEvent) {
+        txtTextArea.deselect();
+        if(textChanged){
+            int flags = 0;
+            if (!btnRegExp.isSelected()) flags = flags|Pattern.LITERAL;
+            if (!btnCaseSensitive.isSelected()) flags = flags | Pattern.CASE_INSENSITIVE;
+            matcher = Pattern.compile(txtFind.getText(),flags).matcher(txtTextArea.getText());
+            textChanged = false;
+        }
+
+        if(matcher.find()){
+            txtTextArea.selectRange(matcher.start(), matcher.end());
+        }else{
+            matcher.reset();
+        }
+    }
+
+    public void btnCaseSensitiveOnAction(ActionEvent actionEvent) {
+        textChanged = true;
+        btnFindNextWord.fire();
+    }
+
+    public void btnRegExpOnAction(ActionEvent actionEvent) {
+        textChanged = true;
+        btnFindNextWord.fire();
     }
 }
