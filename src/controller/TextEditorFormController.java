@@ -256,12 +256,19 @@ public class TextEditorFormController {
             matcher.reset();
         }
 
+
         if(matcher.find()){
-            txtTextArea.selectRange(matcher.start(), matcher.end());
-            lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
+            setRangeAndSetForwardWordCount();
+
         }else{
-            matcher.reset();
+            matcher.find(indexes.get(0));
+            setRangeAndSetForwardWordCount();
         }
+    }
+
+    private void setRangeAndSetForwardWordCount() {
+        txtTextArea.selectRange(matcher.start(), matcher.end());
+        lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
     }
 
     public void btnCaseSensitiveOnAction(ActionEvent actionEvent) {
@@ -280,12 +287,12 @@ public class TextEditorFormController {
         for (int i = 0; i < indexes.size(); i++) {
             if(matcher.start()==indexes.get(0)){
                 txtTextArea.selectRange(indexes.get(indexes.size()-2),indexes.get(indexes.size()-1));
+                lblSearchCount.setText(indexes.size()/2+"/"+ indexes.size()/2);
                 matcher.find(indexes.get(indexes.size()-2));
                 return;
-            }
-            if (matcher.start()==indexes.get(i)){
+            }else if (matcher.start()==indexes.get(i)){
                 txtTextArea.selectRange(indexes.get(i-2),indexes.get(i-1));
-                lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
+                lblSearchCount.setText(" "+(((i-2)/2)+1)+"/"+(indexes.size()/2));
                 matcher.find(indexes.get(i-2));
                 return;
             }
