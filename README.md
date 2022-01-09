@@ -1,9 +1,8 @@
 # UpText - Personal Text Editor
 
----
+
 ## License
 
----
 
 Copyrights © Thilina Upendra. All rights reserved.
 
