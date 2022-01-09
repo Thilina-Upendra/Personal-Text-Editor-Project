@@ -2,18 +2,21 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainContext" prefHeight="477.0" prefWidth="612.0" style="-fx-background-color: #ffffff; -fx-border-color: #2c3e50; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TextEditorFormController">
+<AnchorPane fx:id="mainContext" prefHeight="524.0" prefWidth="741.0" style="-fx-background-color: #ffffff; -fx-border-color: #2c3e50; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TextEditorFormController">
    <children>
       <Label fx:id="lblFileSaveName" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="6.0" prefHeight="16.0" prefWidth="256.0" text="File saved name" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -56,14 +59,14 @@
           </Menu>
         </menus>
       </MenuBar>
-      <JFXTextArea fx:id="txtTextArea" layoutX="4.0" layoutY="163.0" prefHeight="314.0" prefWidth="608.0" style="-fx-border-color: #95a5a6;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="161.0">
+      <JFXTextArea fx:id="txtTextArea" layoutX="8.0" layoutY="167.0" prefHeight="325.0" prefWidth="729.0" style="-fx-border-color: #95a5a6;" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="165.0">
          <font>
             <Font size="15.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXTextArea>
-      <ToolBar layoutX="4.0" layoutY="110.0" prefHeight="53.0" prefWidth="608.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ToolBar layoutX="4.0" layoutY="110.0" prefHeight="53.0" prefWidth="346.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="393.0">
          <items>
             <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#btnNewDocOnAction" prefHeight="35.0" prefWidth="44.0">
                <graphic>
@@ -145,5 +148,25 @@
             <Image url="@../assets/Screenshot%20from%202022-01-05%2005-08-03.png" />
          </image>
       </ImageView>
+      <Label layoutX="4.0" layoutY="502.0" prefHeight="29.0" prefWidth="109.0" text="Word Count : " AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWordCount" layoutX="118.0" layoutY="491.0" prefHeight="29.0" prefWidth="88.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="340.0" layoutY="113.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="7.0" />
+      <JFXTextField focusColor="#2d3436" labelFloat="true" layoutX="347.0" layoutY="114.0" prefHeight="46.0" prefWidth="88.0" promptText="Find" />
+      <ToggleButton layoutX="444.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" text="Cc" />
+      <Separator layoutX="516.0" layoutY="113.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="7.0" />
+      <ToggleButton layoutX="483.0" layoutY="111.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="29.0" text=".*" />
+      <JFXButton layoutX="444.0" layoutY="139.0" prefHeight="6.0" prefWidth="37.0" style="-fx-background-color: #000000;" text="⇈" textFill="WHITE" />
+      <JFXButton layoutX="483.0" layoutY="139.0" prefHeight="26.0" prefWidth="20.0" style="-fx-background-color: #000000;" text="⇊" textFill="WHITE" />
+      <JFXTextField focusColor="#2d3436" labelFloat="true" layoutX="522.0" layoutY="114.0" prefHeight="46.0" prefWidth="95.0" promptText="Replace word" />
+      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="111.0" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace " textFill="WHITE" />
+      <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="631.0" layoutY="139.0" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #000000;" text="Replace All" textFill="WHITE" />
    </children>
 </AnchorPane>

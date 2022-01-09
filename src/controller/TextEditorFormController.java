@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 public class TextEditorFormController {
+    //Public
     public Label lblAppName;
     public MenuBar mbrBar;
     public Menu mnFile;
