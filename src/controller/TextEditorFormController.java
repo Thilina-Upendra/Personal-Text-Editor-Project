@@ -51,6 +51,8 @@ public class TextEditorFormController {
     public ToggleButton btnCaseSensitive;
     public ToggleButton btnRegExp;
     public JFXButton btnFindPreviousWord;
+    public JFXTextField txtReplaceWord;
+    public JFXButton btnReplaceAll;
 
     private Matcher matcher;
     private boolean textChanged;
@@ -69,7 +71,6 @@ public class TextEditorFormController {
             textChanged = true;
         });
 
-
     }
 
 
@@ -83,7 +84,6 @@ public class TextEditorFormController {
         }
         lblWordCount.setText(String.valueOf(count));
     }
-
 
     public void mtmNewONAction(ActionEvent actionEvent) throws IOException {
 
@@ -287,4 +287,12 @@ public class TextEditorFormController {
             }
         }
     }
+
+    public void btnReplaceAllOnAction(ActionEvent actionEvent) {
+        btnFindNextWordOnAction(new ActionEvent());
+        txtTextArea.deselect();
+        String replacedText = matcher.replaceAll(txtReplaceWord.getText());
+        txtTextArea.setText(replacedText);
+    }
+    
 }
