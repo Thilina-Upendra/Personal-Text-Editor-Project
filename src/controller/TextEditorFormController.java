@@ -54,7 +54,7 @@ public class TextEditorFormController {
 
     private Matcher matcher;
     private boolean textChanged;
-    private ArrayList<Integer> indexes = new ArrayList<>();
+    private ArrayList<Integer> indexes ;
 
 
     public void initialize() {
@@ -246,6 +246,7 @@ public class TextEditorFormController {
             textChanged = false;
 
             /*Get all the indexes*/
+            indexes = new ArrayList<>();
             while(matcher.find()){
                 indexes.add(matcher.start());
                 indexes.add(matcher.end());
