@@ -66,7 +66,12 @@ public class TextEditorFormController {
         lblFilePath.setText("");
 
         txtTextArea.textProperty().addListener((observable, oldValue, newValue) -> {
-            setWordCount();
+            if(!newValue.isEmpty()){
+                setWordCount();
+            }else{
+                lblWordCount.setText("");
+                lblSearchCount.setText("");
+            }
         });
 
         txtFind.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -74,8 +79,6 @@ public class TextEditorFormController {
         });
 
     }
-
-
 
     private void setWordCount() {
         String inputText = txtTextArea.getText();
@@ -89,6 +92,7 @@ public class TextEditorFormController {
 
     public void mtmNewONAction(ActionEvent actionEvent) throws IOException {
 
+        /*Create a new window method*/
         if (txtTextArea.getText().isEmpty()) {
             loadNewWindow();
         } else {
@@ -109,6 +113,8 @@ public class TextEditorFormController {
     }
 
     public void mtmOpenOnAction(ActionEvent actionEvent) throws IOException {
+
+        /*Open a selected window method*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a file");
         File file = fileChooser.showOpenDialog(null);
@@ -117,9 +123,7 @@ public class TextEditorFormController {
 
             /*Create a pointer to open(read) the file*/
             Path path = Paths.get(file.getAbsolutePath());
-
             byte[] bytes = Files.readAllBytes(path);
-
             txtTextArea.setText(new String(bytes));
 
             /*Set file name and path*/
@@ -138,6 +142,8 @@ public class TextEditorFormController {
     }
 
     public void mtmSaveOnAction(ActionEvent actionEvent) throws IOException {
+
+        /*Save work method*/
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save a file");
         File file = fileChooser.showSaveDialog(null);
@@ -168,6 +174,8 @@ public class TextEditorFormController {
     }
 
     public void mtmExitOnAction(ActionEvent actionEvent) throws IOException {
+
+        /*Exit from the window method*/
         Stage stage = (Stage) mainContext.getScene().getWindow();
         if (txtTextArea.getText().isEmpty()) {
             stage.close();
@@ -177,6 +185,8 @@ public class TextEditorFormController {
     }
 
     public void mtmCutOnAction(ActionEvent actionEvent) {
+
+        /*Cut selected text method*/
         setSelectedText();
         txtTextArea.setText(txtTextArea.getText().replace(txtTextArea.getSelectedText(), ""));
     }
@@ -189,10 +199,14 @@ public class TextEditorFormController {
     }
 
     public void mtmCopyOnAction(ActionEvent actionEvent) {
+
+        /*Copy selected text to the clipboard method*/
         setSelectedText();
     }
 
     public void mtmPasteOnAction(ActionEvent actionEvent) {
+
+        /*Paste copied or cut text from the text*/
         Clipboard systemClipboard = Clipboard.getSystemClipboard();
         String string = systemClipboard.getString();
         int position = txtTextArea.getCaretPosition();
@@ -200,10 +214,14 @@ public class TextEditorFormController {
     }
 
     public void mtmSelectAllOnAction(ActionEvent actionEvent) {
+
+        /*Select all the text method*/
         txtTextArea.selectAll();
     }
 
     public void mtmAboutUsOnAction(ActionEvent actionEvent) throws IOException {
+
+        /*Load about us window*/
         URL url = getClass().getResource("../view/AboutUsForm.fxml");
         AnchorPane load = FXMLLoader.load(url);
         Scene scene = new Scene(load);
@@ -239,6 +257,8 @@ public class TextEditorFormController {
     }
 
     public void btnFindNextWordOnAction(ActionEvent actionEvent) {
+
+        /*Navigate to the next word method*/
         txtTextArea.deselect();
         if(textChanged){
             int flags = 0;
@@ -256,10 +276,8 @@ public class TextEditorFormController {
             matcher.reset();
         }
 
-
         if(matcher.find()){
             setRangeAndSetForwardWordCount();
-
         }else{
             matcher.find(indexes.get(0));
             setRangeAndSetForwardWordCount();
@@ -267,21 +285,29 @@ public class TextEditorFormController {
     }
 
     private void setRangeAndSetForwardWordCount() {
+
+        /*Show the forward navigation word count*/
         txtTextArea.selectRange(matcher.start(), matcher.end());
         lblSearchCount.setText(" "+(indexes.indexOf(matcher.start())/2+1)+"/"+(indexes.size()/2));
     }
 
     public void btnCaseSensitiveOnAction(ActionEvent actionEvent) {
+
+        /*Case-sensitive option*/
         textChanged = true;
         btnFindNextWord.fire();
     }
 
     public void btnRegExpOnAction(ActionEvent actionEvent) {
+
+        /*Regular expression option*/
         textChanged = true;
         btnFindNextWord.fire();
     }
 
     public void btnFindPreviousWordOnAction(ActionEvent actionEvent) {
+
+        /*Navigate backwards word*/
 
         /*Finalize the index*/
         for (int i = 0; i < indexes.size(); i++) {
@@ -300,6 +326,8 @@ public class TextEditorFormController {
     }
 
     public void btnReplaceAllOnAction(ActionEvent actionEvent) {
+
+        /*Replace all method*/
         if(matcher==null){
             btnFindNextWordOnAction(new ActionEvent());
         }
@@ -311,6 +339,8 @@ public class TextEditorFormController {
     }
 
     public void btnReplaceOnAction(ActionEvent actionEvent) {
+
+        /*Replace selected word methdo*/
         if(matcher==null){
             btnFindNextWordOnAction(new ActionEvent());
             return;

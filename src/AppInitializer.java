@@ -23,15 +23,12 @@ public class AppInitializer extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/TextEditorForm.fxml"));
         Parent parent = loader.load();
 
-        /*============================================*/
+        /*Pass controller object reference to the main stage*/
         TextEditorFormController controller = loader.getController();
-        /*============================================*/
-
-
         primaryStage.setScene(new Scene(parent));
         primaryStage.show();
 
-
+        /*Save before close the window option*/
         primaryStage.setOnCloseRequest(event -> {
             if (!controller.txtTextArea.getText().isEmpty()) {
                 try {
